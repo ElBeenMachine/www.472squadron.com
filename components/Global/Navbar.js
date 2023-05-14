@@ -109,11 +109,9 @@ const MobileNavItem = ({ label, children, href }) => {
   
     return (
         <Stack spacing={4} onClick={children && onToggle}>
-            
-
-            
             {children ? (
-                <Flex py={2} as={Text} cursor={'pointer'} justify={'space-between'} align={'center'} _hover={{ textDecoration: 'none', }}>
+                <Flex py={2} as={"div"} cursor={'pointer'} justify={'space-between'} align={'center'} _hover={{ textDecoration: 'none', }}>
+                    {/* Error */}
                     <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
                         {label}
                     </Text>
