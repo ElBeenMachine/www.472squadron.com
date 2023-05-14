@@ -54,7 +54,7 @@ const DesktopNav = () => {
                             {navItem.children ? (
                                 <Text p={2} fontSize={'sm'} fontWeight={500} color={linkColor} cursor={'pointer'} _hover={{ textDecoration: 'none', color: linkHoverColor }}>{navItem.label}</Text>
                             ) : (
-                                <Link p={2} href={navItem.href ?? '#'} display={'block'} fontSize={'sm'} fontWeight={500} color={linkColor} _hover={{ textDecoration: 'none', color: linkHoverColor }}>
+                                <Link p={2} href={navItem.href ?? '#'} target={navItem.target || "_self"}  display={'block'} fontSize={'sm'} fontWeight={500} color={linkColor} _hover={{ textDecoration: 'none', color: linkHoverColor }}>
                                     {navItem.label}
                                 </Link>
                             )}
@@ -76,9 +76,9 @@ const DesktopNav = () => {
     );
 };
   
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({ label, href, subLabel, target }) => {
     return (
-        <Link href={href} role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ bg: useColorModeValue('blue.50', 'gray.900') }}>
+        <Link href={href} target={target} role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ bg: useColorModeValue('blue.50', 'gray.900') }}>
             <Stack direction={'row'} align={'center'}>
                 <Box>
                     <Text transition={'all .3s ease'} _groupHover={{ color: 'blue.400' }} fontWeight={500}> 
@@ -133,7 +133,7 @@ const MobileNavItem = ({ label, children, href }) => {
             <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
                 <Stack mt={2} pl={4} borderLeft={1} borderStyle={'solid'} borderColor={useColorModeValue('gray.200', 'gray.700')} align={'start'}>
                     {children && children.map((child) => (
-                        <Link key={child.label} py={2} href={child.href}>
+                        <Link key={child.label} target={child.target || "_self"} py={2} href={child.href}>
                             {child.label}
                         </Link>
                     ))}
@@ -145,42 +145,42 @@ const MobileNavItem = ({ label, children, href }) => {
   
 const NAV_ITEMS = [
     {
-        label: 'Inspiration',
+        label: 'Home',
+        href: '/',
+    },
+    {
+        label: 'Current Cadets',
         children: [
             {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
+                label: 'Cadet Portal',
+                subLabel: 'Access Cadet Portal for activity applications and important information.',
+                href: 'https://cadets.bader.mod.uk',
+                target: '_blank'
             },
             {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
-                href: '#',
+                label: 'Bader Learn',
+                subLabel: 'Complete exams to earn qualifications.',
+                href: 'https://learn.bader.mod.uk',
+                target: '_blank'
             },
         ],
     },
     {
-        label: 'Find Work',
+        label: 'Parents',
         children: [
             {
-                label: 'Job Board',
-                subLabel: 'Find your dream design job',
-                href: '#',
+                label: 'Parents and Carers',
+                subLabel: 'A parents\' guide to the RAF Air Cadets.',
+                href: 'https://www.raf.mod.uk/aircadets/cadets/parents-and-carers/',
+                target: '_blank'
             },
             {
-                label: 'Freelance Projects',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
+                label: 'Safeguarding',
+                subLabel: 'Information on the safeguarding policies in place in the RAF Air Cadets.',
+                href: 'https://www.raf.mod.uk/aircadets/safeguarding/safeguarding-guide/',
+                target: '_blank'
             },
         ],
-    },
-    {
-        label: 'Learn Design',
-        href: '#',
-    },
-    {
-        label: 'Hire Designers',
-        href: '#',
     },
 ];
 
