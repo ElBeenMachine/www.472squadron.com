@@ -8,7 +8,7 @@ import colourScheme from "@/styles/colours";
 
 const Layout = (props) => {
     const router = useRouter();
-    const pageDescription = "472 Squadron";
+    const pageDescription = "We are 472 Squadron, a friendly and inclusive squadron committed to welcoming everyone regardless of gender, background, or ability.";
     const pageImage = "https://beta.472squadron.com/img/metadata.png";
     const pageURL = `https://beta.472squadron.com${router.pathname}`;
 
