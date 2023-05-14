@@ -29,7 +29,7 @@ const testimonials = [
 ];
   
 function TestimonialCard(props) {
-    const { name, role, content, avatar, index } = props;
+    const { name, role, content, avatar } = props;
     return (
         <Flex p={6} mt={12} boxShadow={'xl'} maxW={'640px'} direction={{ base: 'column-reverse', md: 'row' }} width={'full'} rounded={'xl'} justifyContent={'space-between'} position={'relative'} bg={useColorModeValue('white', 'gray.800')}>
             <Flex direction={'column'} textAlign={'left'} justifyContent={'space-between'}>
@@ -68,7 +68,7 @@ const Testimonials = () => {
                     young adults in the UK are enrolled in the RAF Air Cadets!
                 </chakra.h2>
             </Box>
-            <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={'20'} mt={16} mb={16} mx={'auto'}>
+            <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={'20'} mb={16} mx={'auto'}>
                 {testimonials.map((cardInfo, index) => (
                     <TestimonialCard key={index} {...cardInfo} index={index} />
                 ))}
