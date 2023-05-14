@@ -1,5 +1,5 @@
 import colourScheme from '@/styles/colours';
-import { chakra, Box, SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue } from '@chakra-ui/react';
+import { SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue } from '@chakra-ui/react';
 import { IoSchool, IoCompass } from 'react-icons/io5';
 import { FaFighterJet } from "react-icons/fa";
   
@@ -16,12 +16,7 @@ const Feature = ({ text, icon, iconBg }) => {
 
 const About = () =>  {
     return (
-        <Flex textAlign={'center'} pt={10} justifyContent={'center'} direction={'column'} width={'full'} overflow={'hidden'}>
-            <Box width={{ base: 'full', sm: 'lg', lg: 'xl' }} margin={'auto'}>
-                <chakra.h3 py={5} fontWeight={'bold'} fontSize={20} textTransform={'uppercase'} color={colourScheme.primaryAccent}>
-                    About Us
-                </chakra.h3>
-            </Box>
+        <Flex textAlign={'center'} p={4} justifyContent={'center'} direction={'column'} width={'full'} overflow={'hidden'} mt={12}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <Stack spacing={4}>
                     <Heading>Air Cadet Life</Heading>
