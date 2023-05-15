@@ -1,53 +1,78 @@
 import colourScheme from '@/styles/colours';
-import { Avatar, Box, chakra, Flex, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
+import { Avatar, Box, chakra, Flex, SimpleGrid, useColorModeValue, Stack, Heading, Text } from '@chakra-ui/react';
   
 const testimonials = [
     {
         name: 'Joselyn McGrady',
-        role: 'Sergeant',
-        content: 'I love being a SGT in the RAF Air Cadets because I get to do amazing things like flying, gliding and shooting, and I also learn valuable skills like leadership and teamwork. I am proud to be part of the RAF Air Cadets and I would recommend it to anyone who wants to challenge themselves and have fun.',
+        title: 'Sergeant',
+        heading: 'Make Friends',
+        content: 'Cadets introduced me to so many new people, I\'ve made some lifelong friends here and would honestly recommend joining to everyone.',
         avatar: '/img/landing/testimonials/SGT McGrady.jpg',
     },
     {
         name: 'Agastya Santosh',
-        role: 'Ex. Sergeant',
+        title: 'Ex. Sergeant',
+        heading: "Learn Life Skills",
         content: "The RAF Air Cadets was a great preparation for my future career and a source of unforgettable memories. I acquired skills that are essential in any job, such as working with others, leading projects and communicating effectively.",
         avatar: '/img/landing/testimonials/SGT Santosh.jpg',
     },
     {
         name: 'Zack Astbury',
-        role: 'Ex. Flight Sergeant',
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mollis quam et eros dignissim, sit amet imperdiet massa venenatis. In cursus metus lectus, eu interdum orci molestie id.",
+        title: 'Ex. Flight Sergeant',
+        heading: "Enter Competitions",
+        content: "During my time in the RAF Air Cadets, I had the opportunity to represent my squadron in cross-country. Winning the gold medal gave me the change to go to a regional competition - The highlight of my cadet career.",
         avatar: '/img/landing/testimonials/FS Astbury.jpg',
     },
     {
         name: 'Ava Hardman',
-        role: 'Sergeant',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mollis quam et eros dignissim, sit amet imperdiet massa venenatis. In cursus metus lectus, eu interdum orci molestie id.',
+        title: 'Sergeant',
+        heading: "Try New Things",
+        content: 'I love being a SGT in the RAF Air Cadets because I get to do amazing things like flying, gliding and shooting. I am proud to be part of the RAF Air Cadets and I would recommend it to anyone who wants to challenge themselves and have fun.',
         avatar: '/img/landing/testimonials/SGT Hardman.jpg',
     }
 ];
-  
-function TestimonialCard(props) {
-    const { name, role, content, avatar } = props;
+
+const Testimonial = ({ children }) => {
+    return <Box maxW={{ lg: "400px", base: "100%" }}>{children}</Box>;
+};
+
+const TestimonialContent = ({ children }) => {
     return (
-        <Flex p={6} mt={12} boxShadow={'xl'} maxW={'640px'} direction={{ base: 'column-reverse', md: 'row' }} width={'full'} rounded={'xl'} justifyContent={'space-between'} position={'relative'} bg={useColorModeValue('white', 'gray.800')}>
-            <Flex direction={'column'} textAlign={'left'} justifyContent={'space-between'}>
-                <chakra.p fontWeight={'medium'} fontSize={'15px'} pb={4}>
-                    {content}
-                </chakra.p>
-                <chakra.p fontWeight={'bold'} fontSize={14}>
-                    {name}
-                    <chakra.span fontWeight={'medium'} color={'gray.500'}>
-                        {' '}
-                        - {role}
-                    </chakra.span>
-                </chakra.p>
-            </Flex>
-            <Avatar src={avatar} height={'100px'} width={'100px'} alignSelf={'center'} m={{ base: '0 0 35px 0', md: '0 0 0 50px' }}/>
+        <Stack bg={useColorModeValue('white', 'gray.800')} boxShadow={'lg'} p={8} rounded={'xl'} align={'center'} pos={'relative'} _after={{ content: `""`, w: 0, h: 0, borderLeft: 'solid transparent', borderLeftWidth: 16, borderRight: 'solid transparent', borderRightWidth: 16, borderTop: 'solid', borderTopWidth: 16, borderTopColor: useColorModeValue('white', 'gray.800'), pos: 'absolute', bottom: '-16px', left: '50%', transform: 'translateX(-50%)', }}>
+            {children}
+        </Stack>
+    );
+};
+
+const TestimonialHeading = ({ children }) => {
+    return (
+        <Heading as={'h3'} fontSize={'xl'}>
+            {children}
+        </Heading>
+    );
+};
+
+const TestimonialText = ({ children }) => {
+    return (
+        <Text textAlign={'center'} color={useColorModeValue('gray.600', 'gray.400')} fontSize={'sm'}>
+            {children}
+        </Text>
+    );
+};
+
+const TestimonialAvatar = ({ src, name, title }) => {
+    return (
+        <Flex align={'center'} mt={8} direction={'column'}>
+            <Avatar src={src} alt={name} mb={2} />
+            <Stack spacing={-1} align={'center'}>
+                <Text fontWeight={600}>{name}</Text>
+                <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
+                    {title}
+                </Text>
+            </Stack>
         </Flex>
     );
-}
+};
   
 const Testimonials = () => {
     return (
@@ -68,9 +93,15 @@ const Testimonials = () => {
                     young adults in the UK are enrolled in the RAF Air Cadets!
                 </chakra.h2>
             </Box>
-            <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={'20'} mb={16} mx={'auto'}>
-                {testimonials.map((cardInfo, index) => (
-                    <TestimonialCard key={index} {...cardInfo} index={index} />
+            <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={{ base: '5', lg: '20'}} mt={16} mb={16} mx={'auto'}>
+                {testimonials.map((testimonial, index) => (
+                    <Testimonial key={index}>
+                        <TestimonialContent>
+                            <TestimonialHeading>{ testimonial.heading }</TestimonialHeading>
+                            <TestimonialText>{ testimonial.content }</TestimonialText>
+                        </TestimonialContent>
+                        <TestimonialAvatar src={ testimonial.avatar } name={ testimonial.name } title={ testimonial.title } />
+                    </Testimonial>
                 ))}
             </SimpleGrid>
         </Flex>

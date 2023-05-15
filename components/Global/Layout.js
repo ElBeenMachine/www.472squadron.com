@@ -45,7 +45,7 @@ const Layout = (props) => {
                 <link ref="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
             </Head>
             <div>
-                <Box display={"flex"} flexDirection={"column"} minH={"100vh"}>
+                <Box display={"flex"} flexDirection={"column"} minH={"100vh"} bg={colourScheme.bodyBackground}>
                     <Navbar />
                     <Box flexGrow={1}>
                         {props.children}
