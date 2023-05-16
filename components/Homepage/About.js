@@ -16,7 +16,7 @@ const Feature = ({ text, icon, iconBg }) => {
 
 const About = () =>  {
     return (
-        <Flex textAlign={'center'} p={4} justifyContent={'center'} direction={'column'} width={'full'} overflow={'hidden'} mt={12}>
+        <Flex textAlign={{ base: "center", md: 'left' }} p={4} justifyContent={'center'} direction={'column'} width={'full'} overflow={'hidden'} mt={12}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <Stack spacing={4}>
                     <Heading>Air Cadet Life</Heading>
