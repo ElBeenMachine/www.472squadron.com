@@ -11,7 +11,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/next-js": "^2.1.4",
-    "@chakra-ui/react": "^2.8.1",
+    "@chakra-ui/react": "^2.8.2",
     "next": "13.5.2",
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
